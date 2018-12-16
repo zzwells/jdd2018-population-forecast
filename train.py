@@ -52,7 +52,7 @@ class STDNTrainer:
     def rmsle(self, y_true, y_pred):
         log_true = K.log(y_true + 1)
         log_pred = K.log(y_pred + 1)
-        return K.sqrt(K.mean(K.square(log_pred - log_true)))
+        return K.sqrt(K.mean(K.square(log_pred - log_true), axis=-1))
 
     def inverse_rmsle(self, x, n_sample):
         return np.power(x, 2) * n_sample
